@@ -217,6 +217,19 @@ if ( ! class_exists( 'ACF_To_REST_API_Controller' ) ) {
 				} else {
 					$data['acf'] = get_fields( $this->id );
 				}
+
+				if ( apply_filters( 'acf/rest_api/field_settings/show_in_rest', true ) ) {
+					$field_objects = $this->get_field_objects( $this->id );
+					if ( $field_objects ) {
+						if ( $field ) {
+							$this->show_in_rest( $data, $field, $field_objects );
+						} else {
+							foreach ( array_keys( $data['acf'] ) as $key ) {
+								$this->show_in_rest( $data['acf'], $key, $field_objects );
+							}
+						}
+					}
+				}
 			} else {
 				$data['acf'] = array();
 			}
@@ -282,5 +295,9 @@ if ( ! class_exists( 'ACF_To_REST_API_Controller' ) ) {
 			return $fields;
 		}
 
+	protected function show_in_rest( &$data, $field, $field_objects ) {
+		if ( ! array_key_exists( $field, $field_objects ) || ! isset( $field_objects[ $field ]['show_in_rest'] ) || ! $field_objects[ $field ]['show_in_rest'] ) {
+			unset( $data[ $field ] );
+		}
 	}
-}
+

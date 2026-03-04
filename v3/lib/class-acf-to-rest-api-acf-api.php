@@ -92,7 +92,7 @@ if ( ! class_exists( 'ACF_To_REST_API_ACF_API' ) ) {
 					$data['acf'] = $fields;
 				}
 
-				if ( apply_filters( 'acf/rest_api/field_settings/show_in_rest', false ) && $this->get_field_objects( $this->id ) ) {
+				if ( apply_filters( 'acf/rest_api/field_settings/show_in_rest', true ) && $this->get_field_objects( $this->id ) ) {
 					if ( $field ) {
 						$this->show_in_rest( $data, $field, $this->field_objects );
 					} else {

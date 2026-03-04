@@ -17,7 +17,7 @@ if ( ! class_exists( 'ACF_To_REST_API_ACF_Field_Settings' ) ) {
 		}
 
 		public static function render_field_settings( $field ) {
-			if ( apply_filters( 'acf/rest_api/field_settings/show_in_rest', false ) ) {
+			if ( apply_filters( 'acf/rest_api/field_settings/show_in_rest', true ) ) {
 				self::show_in_rest( $field );
 			}
 

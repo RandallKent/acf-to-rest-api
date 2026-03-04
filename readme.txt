@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=E5M7H
 Tags: acf, api, rest, wp-api, wp-rest-api, json, wp, wordpress, wp-rest-api, wordpress-rest-api
 Requires at least: 4.6
 Tested up to: 6.7.1
-Stable tag: 3.3.4
+Stable tag: 3.3.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,6 +20,9 @@ Exposes [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-f
 2. Activate the `ACF to REST API` plugin via the plugin admin page
 
 == Changelog ==
+
+= 3.3.5 =
+**Security Fix:** Patched CVE-2025-62979 - Sensitive Data Exposure vulnerability. Changed default behavior to enable `show_in_rest` filtering by default, ensuring only fields explicitly marked as `show_in_rest = true` are exposed through the REST API. This prevents accidental exposure of sensitive ACF field data.
 
 = 3.3.4 =
 fix text domain
